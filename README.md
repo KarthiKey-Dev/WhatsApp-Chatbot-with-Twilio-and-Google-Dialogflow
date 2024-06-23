@@ -45,6 +45,10 @@
 npm install express twilio body-parser dialogflow
 ```
 
+### 3.2 Install Dependencies
+1. Download service key fron google cloud and paste it in the root folder
+2. create API_KEYS.js file and add all the keys
+
 ## Step 4: Expose Your Server Using ngrok
 
 ### 4.1 Install and Run ngrok
