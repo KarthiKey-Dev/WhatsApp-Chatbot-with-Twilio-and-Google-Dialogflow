@@ -1,17 +1,17 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const twilio = require("twilio");
-const dialogflow = require("@google-cloud/dialogflow");
-const uuid = require("uuid");
-const path = require("path");
-const {
+import express from "express";
+import bodyParser from "body-parser";
+import twilio from "twilio";
+import dialogflow from "@google-cloud/dialogflow";
+import { v4 as uuidv4 } from "uuid";
+import path from "path";
+import {
   TWILIO_PHONE_NUMBER,
   PROJECT_ID,
   TWILIO_AUTH_TOKEN,
   TWILIO_ACC_SSID,
-} = require("./API_KEYS");
+} from "./API_KEYS.js";
 
-const keyFilename = path.join(__dirname, "./service_account.json");
+const keyFilename = "./service_account.json";
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -19,7 +19,7 @@ const twilioAccountSid = TWILIO_ACC_SSID;
 const twilioAuthToken = TWILIO_AUTH_TOKEN;
 const twilioClient = new twilio(twilioAccountSid, twilioAuthToken);
 
-const sessionId = uuid.v4();
+const sessionId = uuidv4();
 const projectId = PROJECT_ID;
 const sessionClient = new dialogflow.SessionsClient({ keyFilename });
 
